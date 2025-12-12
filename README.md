@@ -1,9 +1,9 @@
-#Spring Security – Roles y Permisos
+# Spring Security – Roles y Permisos
 
 Proyecto de práctica creado para aprender y probar conceptos fundamentales de Spring Security, 
 incluyendo autenticación, autorización, manejo de usuarios, roles y permisos.
 
-#Objetivo del proyecto
+# Objetivo del proyecto
 
 Servir como base para experimentar y comprender cómo funciona Spring Security con modelos de roles y permisos personalizados,
 ideal para proyectos más grandes o APIs reales.
@@ -16,7 +16,7 @@ spring.security.user.password=${SS_PASSWORD}
 Cambiar por tu user y por tu contraseña
 
 Como esto es sin base de datos los usuarios y roles creados se guardan en memoria 
-#Paso a dejarte el SecurityConfig para que puedas analizarlo
+# Paso a dejarte el SecurityConfig para que puedas analizarlo
 
 @Configuration
 @EnableWebSecurity
@@ -93,18 +93,18 @@ public class SecurityConfig {
 
 }
 
-##Cómo ejecutar
+## Cómo ejecutar
 
-#Cloná el repo
+# Cloná el repo
 
 git clone https://github.com/Garcetejulian3/prueba_security_roles_permisos.git
 
 
-##Ejecutá la aplicación desde tu IDE o con Maven:
+## Ejecutá la aplicación desde tu IDE o con Maven:
 
 mvn spring-boot:run
 
-##Objetivo del proyecto
+## Objetivo del proyecto
 
 Servir como base para experimentar y comprender cómo funciona Spring Security con modelos de roles y permisos personalizados,
 ideal para proyectos más grandes o APIs reales.
