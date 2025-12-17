@@ -3,17 +3,18 @@ package com.roles_permisos.security.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.roles_permisos.security.models.UserSec;
 import com.roles_permisos.security.repository.UserSecRepository;
 
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class UserSecService implements IUserSecService {
 
+    @Autowired
     private UserSecRepository userSecRepository;
 
     @Override
@@ -40,6 +41,10 @@ public class UserSecService implements IUserSecService {
     @Override
     public void update(UserSec userSec) {
         save(userSec);
+    }
+
+    public String encriptPassword(String password) {
+        return new BCryptPasswordEncoder().encode(password);
     }
 
 }

@@ -28,20 +28,22 @@ public class PermisoController {
     @Autowired
     private PermisoService permisoService;
 
-    @GetMapping("/findall")
+    @PreAuthorize("hasAuthority('READ')")
+    @GetMapping
     public ResponseEntity<List<Permiso>> findAllPermisos() {
         List<Permiso> listPermisos = permisoService.findAll();
         return ResponseEntity.ok(listPermisos);
     }
 
-    @GetMapping("/byid/{id}")
+    @PreAuthorize("hasAuthority('READ')")
+    @GetMapping("/{id}")
     public ResponseEntity<Permiso> findPermisoById(@PathVariable Long id) {
         Optional<Permiso> permiso = permisoService.findById(id);
         return permiso.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PreAuthorize("permitAll()")
-    @PostMapping("/save")
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping
     public ResponseEntity<Permiso> createPermiso(@RequestBody Permiso permiso) {
         Permiso newPermiso = permisoService.save(permiso);
         return ResponseEntity.ok(newPermiso);

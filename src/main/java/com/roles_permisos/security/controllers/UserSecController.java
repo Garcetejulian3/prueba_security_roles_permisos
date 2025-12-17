@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,24 +30,30 @@ public class UserSecController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("/findall")
+    @PreAuthorize("hasAuthority('READ')")
+    @GetMapping
     public ResponseEntity<List<UserSec>> getAllUsers() {
         List users = userService.findAll();
         return ResponseEntity.ok(users);
     }
 
-    @GetMapping("/byid/{id}")
+    @PreAuthorize("hasAuthority('READ')")
+    @GetMapping("/{id}")
     public ResponseEntity<UserSec> getUserById(@PathVariable Long id) {
         Optional<UserSec> user = userService.findById(id);
         return user.map(ResponseEntity::ok).orElseGet(()-> ResponseEntity.notFound().build());
 
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity createUser(@RequestBody UserSec userSec) {
 
         Set<Role> roleList = new HashSet<>();
         Role readRole;
+
+        // Encriptar contraseña
+        userSec.setPassword(userService.encriptPassword(userSec.getPassword()));
 
         // Recuperar la Permission/s por su ID
         for (Role role : userSec.getRolesList()){

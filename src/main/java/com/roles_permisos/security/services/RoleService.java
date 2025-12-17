@@ -39,8 +39,16 @@ public class RoleService implements IRoleService{
     }
 
     @Override
-    public Role update(Role role) {
+    public Role update(Long id,Role role) {
+
+        Role roleDb = roleRepository.findById(id).orElseThrow(()-> new RuntimeException("Usuario no encontrado"));
+
+        if(roleDb.getRole() != null){
+            roleDb.setRole(role.getRole());
+        }
+        
         return roleRepository.save(role);
+
     }
     
 

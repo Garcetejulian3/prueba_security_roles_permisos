@@ -10,7 +10,7 @@ public interface IRoleService {
     Optional<Role> findById(Long id);
     Role save(Role role);
     void deleteById(Long id);
-    Role update(Role role);
+    Role update(Long id,Role role);
 }
 
 

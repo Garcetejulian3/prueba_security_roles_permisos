@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWordController {
 
     @GetMapping("/holaseg")
-    @PreAuthorize("hasAuthority('READ')")
+    @PreAuthorize("hasRole('ADMIN')")
     public String secHelloWorld() {
         
-        return "Hola Mundo Esto es una prueba con seguridad";
+        return "Hola Mundo solo los ADMIN pueden ver esta ruta";
     }
 
     @GetMapping("/holanoseg")
