@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "7e700f1e-8000-4d3f-b380-016a9f7e43a9",
+		"name": "# SpringSecurity Full Roles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48818401",
+		"_collection_link": "https://garcetejulian3-5287577.postman.co/workspace/Julian-Garcete's-Workspace~f42cb131-bfdc-4670-80a6-1ebb04d32933/collection/48818401-7e700f1e-8000-4d3f-b380-016a9f7e43a9?action=share&source=collection_link&creator=48818401"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/api/permissions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"permissionName\": \"READ\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/permissions",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"permissions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"todocode\",\r\n    \"password\": \"1234\",\r\n    \"enabled\": true,\r\n    \"accountNotExpired\": true,\r\n    \"accountNotLocked\": true,\r\n    \"credentialNotExpired\": true,\r\n    \"rolesList\": [\r\n        {\r\n            \"id\": 1 // ID del rol ADMIN\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/holanoseg",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/holanoseg",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"holanoseg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/holaseg",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "todocode",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/holaseg",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"holaseg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/roles",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"role\": \"ADMIN\",\r\n    \"permissionsList\": [\r\n        {\r\n            \"id\": 1 // ID del permiso READ\r\n        },\r\n        {\r\n            \"id\": 2 // ID del permiso UPDATE\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/roles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"roles"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
